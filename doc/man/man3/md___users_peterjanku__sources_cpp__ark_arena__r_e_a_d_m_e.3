@@ -1,0 +1,43 @@
+.TH "md___users_peterjanku__sources_cpp__ark_arena__r_e_a_d_m_e" 3 "Fri Feb 18 2022" "Version v0.0.1" "ArkArena" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md___users_peterjanku__sources_cpp__ark_arena__r_e_a_d_m_e \- ArkArena 
+
+.SH "System for Augmented Reality for Kilobots (ARK)"
+.PP
+.SS "Introduction"
+This project is originally developed by Tomas Bata University in Zlin, Faculty of applied informatics\&. Even if it is built on greenfield, some algorithms and principles were used from the previously used system \fCKilobotArena\fP
+.PP
+The main aim is to provide a software tool for Kilobots laboratories, which can be used for the execution and documentation Kilobots based experiments\&.
+.SS "Installation"
+The Ubuntu (or Ubuntu based distributions) is preferred as the OS for ArkArena\&.
+.PP
+Ark arena is composed by using opnesource version of \fCQt 6\fP library and \fCOpenCV\fP\&. Be aware of the version of Qt library installed by the distro package manager (\fCsudo apt install qt\fP), the repositories may contain older than supported versions\&. The recommended way is to use the official online installer\&.
+.PP
+As a project management system the \fCCMake\fP is used\&. Moreover, corresponding C++ compiler need to be installed on target system (Ubuntu: \fCsudo apt install build-essentials\fP)\&. Thanks to the CMake, the various set of IDE's can be used for compilation/development (QtCreator, Eclipse, CLion, etc\&.\&.\&.) Furthermore, the compilation itself can be done by using simple commands in terminal\&.
+.SS "OHC Controller"
+TODO: Add documentation\&.\&.\&.
+.SS "Contribution"
+Please follow the rules defined in \fBCONTRIBUTION\&.md\fP
+.SS "Unit tests"
+The unit tests are based on \fCGTest\fP testing framework\&.
+.PP
+The framework sources are added as a git submodule\&. In order to download it run following command from the project root after cloning of the KilobotArena repository:
+.PP
+.PP
+.nf
+git submodule init
+git submodule update
+.fi
+.PP
+ Moreover, in order to clone the tests, the CMake project tool need to be used and the \fBPACKAGE_TESTS\fP parameter need to be set to ON\&.
+.PP
+The unit tests are place in 'test' folder, where each unit has their own file\&.
+.SS "See Also"
+.IP "\(bu" 2
+ARK makes use of a redesigned overhead controller: \fCARK_OHC\fP
+.IP "\(bu" 2
+\fCKilobot Wiki\fP 
+.PP
+
