@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
     dockVideoSource = new DockIamgeSource(sourceBuffer, this);
     addDockWidget(Qt::LeftDockWidgetArea,dockVideoSource);
 
+    ui->quickWidget->setSource(QUrl::fromLocalFile(":/mainPainter.qml"));
+    ui->quickWidget->show();
 }
 
 MainWindow::~MainWindow()

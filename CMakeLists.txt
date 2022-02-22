@@ -41,8 +41,8 @@ message(STATUS "    version: ${Qt6_VERSION}")
 message(STATUS "    config: ${Qt6_DIR}")
 message(STATUS "    include path: ${Qt6_INCLUDE_DIRS}")
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets Quick  Gui QuickWidgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets Quick Gui QuickWidgets REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -82,7 +82,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(ArkArena PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(ArkArena PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Quick  Qt${QT_VERSION_MAJOR}::Gui  Qt${QT_VERSION_MAJOR}::QuickWidgets)
 
 set_target_properties(ArkArena PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
