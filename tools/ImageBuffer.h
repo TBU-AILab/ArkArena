@@ -8,11 +8,11 @@
 #include <QMutexLocker>
 
 /**
- * Template class for storing set of continusous data.
+ * Template class for storing set of continuous data.
  * The data are stored in array - the class is working like a circular buffer. The data in buffer can be be overwrite
  * when the buffer is full or the push function can be blocking.
  * @tparam T Data type of stored values
- * @tparam size Size of circular buffer
+ * @tparam size Size of circular buffer. (Default value size is 2)
  */
 template<class T, int size = 2>
 class ImageBuffer {
@@ -23,7 +23,12 @@ public:
      */
     int getSize() { return size; }
 
+    /**
+     * Return number of free elements in buffer
+     * @return Number of free elements
+     */
     int getFree();
+
 
     int getLastIndex();
 

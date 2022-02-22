@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <opencv2/core.hpp>
+#include "dockimagesource.h"
+#include "tools/ImageBuffer.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,5 +21,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    DockIamgeSource *dockVideoSource;
+    ImageBuffer<cv::Mat> *sourceBuffer;
 };
 #endif // MAINWINDOW_H

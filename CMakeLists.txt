@@ -4,14 +4,15 @@ project(ArkArena VERSION 0.0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic -std=c++11")
+
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(UNIT_TESTS "Build the unit tests")
 if(UNIT_TESTS)
@@ -49,7 +50,14 @@ set(PROJECT_SOURCES
         gui/mainwindow.h
         gui/mainwindow.ui
         gui/resources.qrc
-)
+        gui/dockimagesource.h
+        gui/dockimagesource.cpp
+        gui/dockimagesource.ui
+        imageSource/ImageSource.h
+        imageSource/single_camera_source/SingleCameraImageSource.cpp
+        imageSource/single_camera_source/SingleCameraImageSource.h
+        imageSource/photo_source/PhotoImageSource.cpp
+        imageSource/photo_source/PhotoImageSource.h)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ArkArena
