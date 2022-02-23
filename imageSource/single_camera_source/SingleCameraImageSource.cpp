@@ -29,4 +29,4 @@ void SingleCameraImageSource::emitNewFrame() {
     ImageSource::emitNewFrame();
 }
 
-SingleCameraImageSource::SingleCameraImageSource(const std::shared_ptr<ImageBuffer<cv::Mat>> &buffer) : ImageSource(buffer) {}
+SingleCameraImageSource::SingleCameraImageSource(ImageBuffer<cv::Mat> *buffer) : ImageSource(buffer) {}

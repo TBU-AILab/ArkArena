@@ -46,7 +46,7 @@ void DockIamgeSource::on_imageSourceCB_currentTextChanged(const QString &arg1)
  */
 void DockIamgeSource::selectPhotoSource() {
 
-    source = new PhotoImageSource(nullptr);
+    source = new PhotoImageSource(buffer);
     ui->sourceControlsW->setLayout(source->getUI());
     reconnectSourceSignals();
 
@@ -60,7 +60,7 @@ void DockIamgeSource::reconnectSourceSignals() const {
 }
 
 void DockIamgeSource::selectVideoSource() {
-    source = new SingleCameraImageSource(nullptr);
+    source = new SingleCameraImageSource(buffer);
     ui->sourceControlsW->setLayout(source->getUI());
     reconnectSourceSignals();
 }

@@ -7,7 +7,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic -std=c++11 -fsanitize=address")
 
 
 set(CMAKE_AUTOUIC ON)
@@ -57,7 +57,7 @@ set(PROJECT_SOURCES
         imageSource/single_camera_source/SingleCameraImageSource.cpp
         imageSource/single_camera_source/SingleCameraImageSource.h
         imageSource/photo_source/PhotoImageSource.cpp
-        imageSource/photo_source/PhotoImageSource.h)
+        imageSource/photo_source/PhotoImageSource.h imageSource/photo_source/PhotoLoader.cpp imageSource/photo_source/PhotoLoader.h)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ArkArena
@@ -83,6 +83,7 @@ else()
 endif()
 
 target_link_libraries(ArkArena PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Quick  Qt${QT_VERSION_MAJOR}::Gui  Qt${QT_VERSION_MAJOR}::QuickWidgets)
+target_link_libraries (ArkArena PRIVATE ${OpenCV_LIBS})
 
 set_target_properties(ArkArena PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

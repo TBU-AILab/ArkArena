@@ -24,9 +24,11 @@ enum class ImageSourceStatus{
  * The implementation as a worker thread is chosen in order to have ability of future parallelization (in case of multiple camera source)
  */
 class ImageSource : public QObject {
+    Q_OBJECT
+
 public:
 
-    explicit ImageSource(std::shared_ptr<ImageBuffer<cv::Mat>> buffer) : buffer(buffer), status(ImageSourceStatus::Uninitialized) {};
+    explicit ImageSource(ImageBuffer<cv::Mat> *buffer) : buffer(buffer), status(ImageSourceStatus::Uninitialized) {};
 
     /**
      * Returns current status of the image source.
@@ -67,7 +69,7 @@ protected:
 
     virtual void emitNewFrame() {;} //emit newFrame(); }
 
-    std::weak_ptr<ImageBuffer<cv::Mat>> buffer;         /**< Pointer to a image buffer */
+    ImageBuffer<cv::Mat> *buffer;                        /**< Pointer to a image buffer */
     ImageSourceStatus status;                           /**< Status of the ImageSource device */
 };
 

@@ -14,13 +14,14 @@
 
 #include "tools/ImageBuffer.h"
 #include "imageSource/ImageSource.h"
+#include "PhotoLoader.h"
 
 /**
  * The photo source class. This class will load the set of images from specific folder and serve them as a image source for the ArkArena
  */
 class PhotoImageSource: public  ImageSource{
 public:
-    explicit  PhotoImageSource(std::shared_ptr<ImageBuffer<cv::Mat>> buffer);
+    explicit  PhotoImageSource(ImageBuffer<cv::Mat> *buffer);
     virtual ~PhotoImageSource();
 
     void initSource() override;
@@ -40,6 +41,8 @@ protected slots:
 protected:
     void emitNewFrame() override;
 
+    QThread workerThread;
+    PhotoLoader *worker;
 
     QStringList listOfFiles;
     QTimer timer;

@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    sourceBuffer = new ImageBuffer<cv::Mat>();
     dockVideoSource = new DockIamgeSource(sourceBuffer, this);
     addDockWidget(Qt::LeftDockWidgetArea,dockVideoSource);
 

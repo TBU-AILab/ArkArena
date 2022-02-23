@@ -10,7 +10,7 @@
 #include <QSettings>
 #include <QMessageBox>
 
-PhotoImageSource::PhotoImageSource(std::shared_ptr<ImageBuffer<cv::Mat>> buffer) :ImageSource(buffer){
+PhotoImageSource::PhotoImageSource(ImageBuffer<cv::Mat> *buffer) :ImageSource(buffer){
     connect(&timer,&QTimer::timeout, this, [this](){
         loadNextImage(false);
     });
@@ -35,9 +35,11 @@ void PhotoImageSource::initSource() {
         QMessageBox::critical(nullptr,"Image source", "No images were found!");
     }
 }
-
+//TODO: OPRAVIT OKAMŽITĚ - NELZE POKAŽDÉ VYTVÁŘET NOVÝ WOKER
 void PhotoImageSource::start() {
-    timer.start(1000);
+    worker = new PhotoLoader(buffer,listOfFiles);
+    worker->moveToThread(&workerThread);
+    workerThread.start();
 }
 
 void PhotoImageSource::stop() {
@@ -93,6 +95,7 @@ void PhotoImageSource::loadSetting() {
 
 void PhotoImageSource::emitNewFrame() {
     //ImageSource::emitNewFrame();
+    emit ImageSource::newFrame();
 }
 
 

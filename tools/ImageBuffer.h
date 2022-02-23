@@ -6,7 +6,7 @@
 #define KILOBOTARENA_IMAGEBUFFER_H
 #include <QMutex>
 #include <QMutexLocker>
-
+#include <QDebug>
 /**
  * Template class for storing set of continuous data.
  * The data are stored in array - the class is working like a circular buffer. The data in buffer can be be overwrite
@@ -85,6 +85,7 @@ bool ImageBuffer<T, size>::pushOverride(T value) {
     QMutexLocker lock(&manipulationMutex);
     if ((++last) == size)  last = 0;
     buffer[last]  = value;
+    qDebug() << "New element...";
     return false;
 }
 

@@ -11,7 +11,7 @@
 class SingleCameraImageSource: public ImageSource{
 public:
 
-    SingleCameraImageSource(const std::shared_ptr<ImageBuffer<cv::Mat>> &buffer);
+    SingleCameraImageSource(ImageBuffer<cv::Mat> *buffer);
 
     void initSource() override;
 
