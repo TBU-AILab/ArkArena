@@ -114,6 +114,7 @@ void PhotoImageSource::selectNewPath() {
     }
 }
 
+
 /**
  * Slot for a spin box in configuration section - select a new frame rate
  */
@@ -122,5 +123,7 @@ void PhotoImageSource::changeFrameRate() {
 }
 
 PhotoImageSource::~PhotoImageSource() {
+    workerThread.quit();
+    workerThread.wait();
     qDebug() << "Photo source is deleted";
 }
