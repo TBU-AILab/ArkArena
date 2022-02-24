@@ -57,7 +57,11 @@ set(PROJECT_SOURCES
         imageSource/single_camera_source/SingleCameraImageSource.cpp
         imageSource/single_camera_source/SingleCameraImageSource.h
         imageSource/photo_source/PhotoImageSource.cpp
-        imageSource/photo_source/PhotoImageSource.h imageSource/photo_source/PhotoLoader.cpp imageSource/photo_source/PhotoLoader.h)
+        imageSource/photo_source/PhotoImageSource.h
+        imageSource/photo_source/PhotoLoader.cpp
+        imageSource/photo_source/PhotoLoader.h
+        tools/LiveImageProvider.cpp
+        tools/LiveImageProvider.h)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(ArkArena

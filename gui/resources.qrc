@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>mainPainter.qml</file>
+        <file>img/faiLogo.jpeg</file>
     </qresource>
 </RCC>
